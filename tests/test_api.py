@@ -17,9 +17,9 @@ def test_hh_api():
         
         data = response.json()
         
-        print("✅ API работает корректно!")
-        print(f"📊 Найдено вакансий: {data['found']}")
-        print(f"📄 Страниц: {data['pages']}")
+        print(" API работает корректно!")
+        print(f" Найдено вакансий: {data['found']}")
+        print(f" Страниц: {data['pages']}")
         
         # Сохраняем пример данных
         with open("data/raw/sample_data.json", "w", encoding="utf-8") as f:
@@ -28,7 +28,7 @@ def test_hh_api():
         # Показываем первую вакансию
         if data["items"]:
             first_vacancy = data["items"][0]
-            print("\n📋 Пример вакансии:")
+            print("\n Пример вакансии:")
             print(f"Название: {first_vacancy.get('name')}")
             print(f"Зарплата: {first_vacancy.get('salary')}")
             print(f"Регион: {first_vacancy.get('area', {}).get('name')}")
@@ -37,7 +37,7 @@ def test_hh_api():
         return True
         
     except requests.exceptions.RequestException as e:
-        print(f"❌ Ошибка при запросе: {e}")
+        print(f"[X] Ошибка при запросе: {e}")
         return False
 
 if __name__ == "__main__":
