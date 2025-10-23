@@ -1,5 +1,5 @@
 import time
-from src.api.hh_api_client import IndustrialFilter  # ← Импортируем правильный класс
+from src.api.hh_api_client import IndustrialFilter  
 from src.database.db_manager import DatabaseManager
 
 def main():
@@ -9,7 +9,7 @@ def main():
     print("НАЧАЛО СБОРА ДАННЫХ О ВАКАНСИЯХ")
     
     # Инициализируем фильтр промышленных вакансий и менеджер базы данных
-    industrial_filter = IndustrialFilter()  # ← Используем ваш класс
+    industrial_filter = IndustrialFilter()  
     db_manager = DatabaseManager()
     
     try:
