@@ -1,0 +1,634 @@
+{
+  "summary": {
+    "total_checks": 9,
+    "passed_checks": 8,
+    "failed_checks": 0,
+    "warning_checks": 1,
+    "overall_score": 88.89,
+    "data_completeness": 52.16
+  },
+  "quality_metrics": {},
+  "issues": {},
+  "recommendations": [
+    "Рассмотреть удаление столбцов с высоким процентом пропусков: department (100.0%), insider_interview (100.0%), contacts (100.0%), adv_response_url (100.0%), adv_context (100.0%), salary_range.to (61.66%), address.description (100.0%), address.metro (100.0%), employer.logo_urls (100.0%), salary (100.0%), salary_range (100.0%), show_logo_in_search (77.52%), address (100.0%), address.metro.station_name (75.13%), address.metro.line_name (75.13%), address.metro.station_id (75.13%), address.metro.line_id (75.13%), address.metro.lat (75.13%), address.metro.lng (75.13%), salary_range.frequency (100.0%), branding.type (76.89%), branding.tariff (96.82%), department.id (93.86%), department.name (93.86%), insider_interview.id (99.02%), insider_interview.url (99.02%), immediate_redirect_url (99.83%), brand_snippet.logo (100.0%), brand_snippet.logo_xs (100.0%), brand_snippet.logo_scalable.default.width (99.88%), brand_snippet.logo_scalable.default.height (99.88%), brand_snippet.logo_scalable.default.url (99.88%), brand_snippet.logo_scalable.xs.width (99.88%), brand_snippet.logo_scalable.xs.height (99.88%), brand_snippet.logo_scalable.xs.url (99.88%), brand_snippet.picture (100.0%), brand_snippet.picture_xs (100.0%), brand_snippet.picture_scalable.default.width (99.89%), brand_snippet.picture_scalable.default.height (99.89%), brand_snippet.picture_scalable.default.url (99.89%), brand_snippet.picture_scalable.xs.width (99.89%), brand_snippet.picture_scalable.xs.height (99.89%), brand_snippet.picture_scalable.xs.url (99.89%), brand_snippet.background.color (99.89%), brand_snippet.background.gradient (100.0%), video_vacancy.cover_picture.resized_path (99.99%), video_vacancy.cover_picture.resized_width (99.99%), video_vacancy.cover_picture.resized_height (99.99%), video_vacancy.snippet_picture.url (99.99%), video_vacancy.video.upload_id (99.99%), video_vacancy.video.url (99.99%), video_vacancy.snippet_video.upload_id (99.99%), video_vacancy.snippet_video.url (99.99%), video_vacancy.video_url (99.99%), video_vacancy.snippet_video_url (99.99%), video_vacancy.snippet_picture_url (99.99%), brand_snippet.picture_scalable.default (100.0%), brand_snippet.picture_scalable.xs (100.0%), brand_snippet.background.gradient.angle (99.99%), brand_snippet.background.gradient.color_list (99.99%), video_vacancy.snippet_picture (100.0%), video_vacancy.snippet_video (100.0%), salary_to_rub (61.66%)"
+  ],
+  "basic_checks": {
+    "dataset_size": {
+      "rows": 18024,
+      "columns": 135,
+      "status": "PASS"
+    },
+    "required_columns": {
+      "missing": [],
+      "status": "PASS"
+    },
+    "data_types": {
+      "issues": [
+        "id должен быть числовым"
+      ],
+      "status": "WARNING"
+    }
+  },
+  "quality_checks": {
+    "missing_values": {
+      "id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "name": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "department": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "published_at": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "created_at": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "archived": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "show_contacts": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "insider_interview": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "url": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "contacts": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "working_days": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "working_time_intervals": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "working_time_modes": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "accept_temporary": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "fly_in_fly_out_duration": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "work_format": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "working_hours": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "work_schedule_by_days": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "night_shifts": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "professional_roles": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "accept_incomplete_resumes": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "internship": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "adv_response_url": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "is_adv_vacancy": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "adv_context": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "area.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "area.name": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "area.url": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "salary_range.from": {
+        "count": 4845,
+        "percentage": 26.88
+      },
+      "salary_range.to": {
+        "count": 11114,
+        "percentage": 61.66
+      },
+      "salary_range.currency": {
+        "count": 4049,
+        "percentage": 22.46
+      },
+      "salary_range.gross": {
+        "count": 4050,
+        "percentage": 22.47
+      },
+      "salary_range.mode.id": {
+        "count": 4049,
+        "percentage": 22.46
+      },
+      "salary_range.mode.name": {
+        "count": 4049,
+        "percentage": 22.46
+      },
+      "salary_range.frequency.id": {
+        "count": 8830,
+        "percentage": 48.99
+      },
+      "salary_range.frequency.name": {
+        "count": 8830,
+        "percentage": 48.99
+      },
+      "type.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "address.city": {
+        "count": 2825,
+        "percentage": 15.67
+      },
+      "address.street": {
+        "count": 5425,
+        "percentage": 30.1
+      },
+      "address.building": {
+        "count": 6209,
+        "percentage": 34.45
+      },
+      "address.lat": {
+        "count": 2646,
+        "percentage": 14.68
+      },
+      "address.lng": {
+        "count": 2646,
+        "percentage": 14.68
+      },
+      "address.description": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "address.raw": {
+        "count": 2643,
+        "percentage": 14.66
+      },
+      "address.metro": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "address.metro_stations": {
+        "count": 2555,
+        "percentage": 14.18
+      },
+      "address.id": {
+        "count": 2555,
+        "percentage": 14.18
+      },
+      "employer.id": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.name": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "employer.url": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.alternate_url": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.logo_urls": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "employer.vacancies_url": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.country_id": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.accredited_it_employer": {
+        "count": 18,
+        "percentage": 0.1
+      },
+      "employer.trusted": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "schedule.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "experience.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "employment.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "employment_form.id": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "employment_form.name": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "salary": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "salary_range": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "show_logo_in_search": {
+        "count": 13973,
+        "percentage": 77.52
+      },
+      "employer.logo_urls.original": {
+        "count": 1909,
+        "percentage": 10.59
+      },
+      "employer.logo_urls.90": {
+        "count": 1910,
+        "percentage": 10.6
+      },
+      "employer.logo_urls.240": {
+        "count": 1911,
+        "percentage": 10.6
+      },
+      "address": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "address.metro.station_name": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "address.metro.line_name": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "address.metro.station_id": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "address.metro.line_id": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "address.metro.lat": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "address.metro.lng": {
+        "count": 13541,
+        "percentage": 75.13
+      },
+      "salary_range.frequency": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "branding.type": {
+        "count": 13859,
+        "percentage": 76.89
+      },
+      "branding.tariff": {
+        "count": 17451,
+        "percentage": 96.82
+      },
+      "department.id": {
+        "count": 16918,
+        "percentage": 93.86
+      },
+      "department.name": {
+        "count": 16918,
+        "percentage": 93.86
+      },
+      "insider_interview.id": {
+        "count": 17848,
+        "percentage": 99.02
+      },
+      "insider_interview.url": {
+        "count": 17848,
+        "percentage": 99.02
+      },
+      "immediate_redirect_url": {
+        "count": 17994,
+        "percentage": 99.83
+      },
+      "brand_snippet.logo": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.logo_xs": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.logo_scalable.default.width": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.logo_scalable.default.height": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.logo_scalable.default.url": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.logo_scalable.xs.width": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.logo_scalable.xs.height": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.logo_scalable.xs.url": {
+        "count": 18003,
+        "percentage": 99.88
+      },
+      "brand_snippet.picture": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.picture_xs": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.picture_scalable.default.width": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.picture_scalable.default.height": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.picture_scalable.default.url": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.picture_scalable.xs.width": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.picture_scalable.xs.height": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.picture_scalable.xs.url": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.background.color": {
+        "count": 18005,
+        "percentage": 99.89
+      },
+      "brand_snippet.background.gradient": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "video_vacancy.cover_picture.resized_path": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.cover_picture.resized_width": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.cover_picture.resized_height": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_picture.url": {
+        "count": 18023,
+        "percentage": 99.99
+      },
+      "video_vacancy.video.upload_id": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.video.url": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_video.upload_id": {
+        "count": 18023,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_video.url": {
+        "count": 18023,
+        "percentage": 99.99
+      },
+      "video_vacancy.video_url": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_video_url": {
+        "count": 18023,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_picture_url": {
+        "count": 18023,
+        "percentage": 99.99
+      },
+      "brand_snippet.picture_scalable.default": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.picture_scalable.xs": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "brand_snippet.background.gradient.angle": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "brand_snippet.background.gradient.color_list": {
+        "count": 18022,
+        "percentage": 99.99
+      },
+      "video_vacancy.snippet_picture": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "video_vacancy.snippet_video": {
+        "count": 18024,
+        "percentage": 100.0
+      },
+      "salary_from_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "salary_to_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "salary_currency_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "salary_from_rub": {
+        "count": 4845,
+        "percentage": 26.88
+      },
+      "salary_to_rub": {
+        "count": 11114,
+        "percentage": 61.66
+      },
+      "salary_avg_rub": {
+        "count": 4049,
+        "percentage": 22.46
+      },
+      "has_salary": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "published_year": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "published_month": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "published_week": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "published_day": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "experience_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "employment_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "schedule_cleaned": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "position_level": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "industry_segment": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "description_length": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "is_premium": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "duplicates": {
+      "count": 0,
+      "percentage": 0.0
+    },
+    "salary_outliers": {
+      "count": 688,
+      "percentage": 4.92,
+      "bounds": {
+        "lower": -27000.0,
+        "upper": 285000.0
+      }
+    },
+    "text_quality": {
+      "name": {
+        "empty_strings": 0,
+        "default_values": 0,
+        "unique_values": 8676
+      },
+      "area.name": {
+        "empty_strings": 0,
+        "default_values": 0,
+        "unique_values": 798
+      },
+      "employer.name": {
+        "empty_strings": 0,
+        "default_values": 0,
+        "unique_values": 6259
+      }
+    }
+  },
+  "integrity_checks": {
+    "future_dates": {
+      "count": 0,
+      "status": "PASS"
+    },
+    "salary_ranges": {
+      "invalid_ranges": 0,
+      "status": "PASS"
+    },
+    "unique_ids": {
+      "unique_count": 18024,
+      "total_count": 18024,
+      "status": "PASS"
+    }
+  },
+  "consistency_checks": {
+    "position_levels": {
+      "invalid_values": [],
+      "status": "PASS"
+    },
+    "industry_segments": {
+      "invalid_values": [],
+      "status": "PASS"
+    },
+    "date_consistency": {
+      "mismatches": 0,
+      "status": "PASS"
+    }
+  }
+}

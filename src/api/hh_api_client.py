@@ -516,17 +516,17 @@ class HHAPIClient:
             
         complete_dataset = {}
         
-        self.logger.info(f"🚀 Начинаем сбор полного датасета")
-        self.logger.info(f"📅 Период: {start_date} - {end_date}")
-        self.logger.info(f"🔍 Запросов: {len(search_queries)}")
-        self.logger.info(f"🌍 Регионов: {len(areas)}")
+        self.logger.info(f" Начинаем сбор полного датасета")
+        self.logger.info(f" Период: {start_date} - {end_date}")
+        self.logger.info(f" Запросов: {len(search_queries)}")
+        self.logger.info(f" Регионов: {len(areas)}")
         
         for query in search_queries:
-            self.logger.info(f"🔎 Сбор по запросу: '{query}'")
+            self.logger.info(f" Сбор по запросу: '{query}'")
             query_vacancies = []
             
             for area in areas:
-                self.logger.info(f"📍 Регион: {area}")
+                self.logger.info(f" Регион: {area}")
                 
                 # Используем метод сбора по периодам
                 vacancies = self.get_vacancies_by_periods(
@@ -540,16 +540,16 @@ class HHAPIClient:
                 industrial_vacancies = [v for v in vacancies if self.is_industrial_vacancy(v)]
                 query_vacancies.extend(industrial_vacancies)
                 
-                self.logger.info(f"✅ Регион {area}: {len(industrial_vacancies)} промышленных вакансий")
+                self.logger.info(f"[V] Регион {area}: {len(industrial_vacancies)} промышленных вакансий")
                 
                 # Ограничение на количество вакансий на запрос
                 if len(query_vacancies) >= max_vacancies_per_query:
-                    self.logger.info(f"🎯 Достигнут лимит вакансий для запроса '{query}'")
+                    self.logger.info(f" Достигнут лимит вакансий для запроса '{query}'")
                     query_vacancies = query_vacancies[:max_vacancies_per_query]
                     break
                     
             complete_dataset[query] = query_vacancies
-            self.logger.info(f"✅ Запрос '{query}': собрано {len(query_vacancies)} вакансий")
+            self.logger.info(f"[V] Запрос '{query}': собрано {len(query_vacancies)} вакансий")
             
         return complete_dataset
 
@@ -563,9 +563,9 @@ class HHAPIClient:
         if target_count:
             self.config['target_vacancies'] = target_count
             
-        self.logger.info(f"🚀 Сбор полного датасета промышленных вакансий")
-        self.logger.info(f"🎯 Цель: {self.config['target_vacancies']} вакансий")
-        self.logger.info(f"⚙️ Настройки: {self.config['max_workers']} потоков, задержка {self.config['requests_delay']}с")
+        self.logger.info(f" Сбор полного датасета промышленных вакансий")
+        self.logger.info(f" Цель: {self.config['target_vacancies']} вакансий")
+        self.logger.info(f" Настройки: {self.config['max_workers']} потоков, задержка {self.config['requests_delay']}с")
         
         start_time = datetime.now()
         all_vacancies = {}
@@ -576,7 +576,7 @@ class HHAPIClient:
             for region_name, region_code in self.config['regions'].items():
                 search_combinations.append((query, region_name, region_code))
         
-        self.logger.info(f"📝 Комбинаций для поиска: {len(search_combinations)}")
+        self.logger.info(f" Комбинаций для поиска: {len(search_combinations)}")
         
         # Перемешиваем комбинации для равномерной нагрузки
         random.shuffle(search_combinations)
@@ -606,11 +606,11 @@ class HHAPIClient:
                     
                     # Логируем прогресс
                     progress_percent = (completed / len(search_combinations)) * 100
-                    self.logger.info(f"🔄 Прогресс: {completed}/{len(search_combinations)} ({progress_percent:.1f}%) завершено, собрано {self.total_collected} вакансий")
+                    self.logger.info(f" Прогресс: {completed}/{len(search_combinations)} ({progress_percent:.1f}%) завершено, собрано {self.total_collected} вакансий")
                         
                     # Проверяем достижение цели
                     if self.total_collected >= self.config['target_vacancies']:
-                        self.logger.info(f"🎯 Достигнута цель: {self.total_collected} вакансий")
+                        self.logger.info(f" Достигнута цель: {self.total_collected} вакансий")
                         break
                         
                     # Пауза между обработкой результатов
@@ -624,9 +624,9 @@ class HHAPIClient:
         # Анализируем результаты
         self.analyze_industrial_data(all_vacancies)
         
-        self.logger.info(f"⏱️ Время сбора: {collection_time}")
+        self.logger.info(f" Время сбора: {collection_time}")
         if collection_time.total_seconds() > 0:
-            self.logger.info(f"🚀 Скорость: {self.total_collected/collection_time.total_seconds():.1f} вакансий/сек")
+            self.logger.info(f" Скорость: {self.total_collected/collection_time.total_seconds():.1f} вакансий/сек")
         
         return all_vacancies
 
@@ -639,7 +639,7 @@ class HHAPIClient:
         total_vacancies = sum(len(v) for v in all_vacancies.values())
         
         self.logger.info("=" * 50)
-        self.logger.info("📊 АНАЛИЗ СОБРАННЫХ ДАННЫХ")
+        self.logger.info(" АНАЛИЗ СОБРАННЫХ ДАННЫХ")
         self.logger.info("=" * 50)
         self.logger.info(f"Всего вакансий: {total_vacancies}")
         
@@ -651,7 +651,7 @@ class HHAPIClient:
                 profession_stats[profession] = 0
             profession_stats[profession] += len(vacancies)
         
-        self.logger.info("\n📈 РАСПРЕДЕЛЕНИЕ ПО ПРОФЕССИЯМ:")
+        self.logger.info("\n РАСПРЕДЕЛЕНИЕ ПО ПРОФЕССИЯМ:")
         for profession, count in sorted(profession_stats.items(), key=lambda x: x[1], reverse=True)[:10]:
             percentage = (count / total_vacancies) * 100
             self.logger.info(f"  {profession}: {count} ({percentage:.1f}%)")
@@ -659,7 +659,7 @@ class HHAPIClient:
         # Статистика по зарплатам
         salary_stats = self.analyze_salaries(all_vacancies)
         if salary_stats:
-            self.logger.info(f"\n💰 СТАТИСТИКА ПО ЗАРПЛАТАМ:")
+            self.logger.info(f"\n СТАТИСТИКА ПО ЗАРПЛАТАМ:")
             self.logger.info(f"  Вакансий с зарплатой: {salary_stats['with_salary']}/{total_vacancies} ({salary_stats['salary_percentage']:.1f}%)")
             if salary_stats['avg_salary'] > 0:
                 self.logger.info(f"  Средняя зарплата: {salary_stats['avg_salary']:,.0f} руб.")
@@ -750,8 +750,8 @@ class HHAPIClient:
         with open(combined_filename, 'w', encoding='utf-8') as f:
             json.dump(all_vacancies, f, ensure_ascii=False, indent=2)
             
-        self.logger.info(f"💾 Полный датасет сохранен в: {dataset_dir}")
-        self.logger.info(f"📊 Статистика: {stats}")
+        self.logger.info(f" Полный датасет сохранен в: {dataset_dir}")
+        self.logger.info(f" Статистика: {stats}")
         
         return dataset_dir
 
@@ -780,7 +780,7 @@ def collect_full_industrial_dataset():
     # Сохраняем датасет
     dataset_dir = client.save_complete_dataset(complete_dataset)
     
-    print(f"✅ Полный датасет собран и сохранен в: {dataset_dir}")
+    print(f"[V] Полный датасет собран и сохранен в: {dataset_dir}")
     return dataset_dir
 
 
