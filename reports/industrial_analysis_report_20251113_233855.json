@@ -1,0 +1,1902 @@
+{
+  "generated_at": "2025-11-13T23:38:55.618021",
+  "basic_statistics": {
+    "total_vacancies": 10949,
+    "vacancies_with_salary": 10949,
+    "unique_employers": 2733,
+    "unique_regions": 44,
+    "avg_salary": 101053.49264773038,
+    "min_salary": 2,
+    "max_salary": 1250000,
+    "median_salary": 92000.0,
+    "earliest_date": "2025-10-13T03:21:16+03:00",
+    "latest_date": "2025-11-11T22:54:20+03:00",
+    "unique_days": 30,
+    "salary_coverage_percent": 100.0
+  },
+  "industry_segments": {
+    "segments": [
+      {
+        "industry_segment": "другое",
+        "vacancy_count": 5686,
+        "with_salary_count": 5686,
+        "avg_salary": 100312.2754132958,
+        "unique_employers": 1904,
+        "unique_regions": 44,
+        "percentage": 51.93168325874509,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 90000.0
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "vacancy_count": 1347,
+        "with_salary_count": 1347,
+        "avg_salary": 92959.38307349666,
+        "unique_employers": 382,
+        "unique_regions": 44,
+        "percentage": 12.30249337839072,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 87000.0
+      },
+      {
+        "industry_segment": "строительная",
+        "vacancy_count": 993,
+        "with_salary_count": 993,
+        "avg_salary": 117418.14904330313,
+        "unique_employers": 486,
+        "unique_regions": 44,
+        "percentage": 9.069321399214541,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "энергетика",
+        "vacancy_count": 745,
+        "with_salary_count": 745,
+        "avg_salary": 101266.53288590604,
+        "unique_employers": 448,
+        "unique_regions": 42,
+        "percentage": 6.804274362955522,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 94800.0
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "vacancy_count": 584,
+        "with_salary_count": 584,
+        "avg_salary": 93754.99143835617,
+        "unique_employers": 261,
+        "unique_regions": 43,
+        "percentage": 5.333820440222851,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "металлургия",
+        "vacancy_count": 512,
+        "with_salary_count": 512,
+        "avg_salary": 98117.71875,
+        "unique_employers": 330,
+        "unique_regions": 38,
+        "percentage": 4.676226139373458,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "химическая",
+        "vacancy_count": 482,
+        "with_salary_count": 482,
+        "avg_salary": 95163.53319502075,
+        "unique_employers": 287,
+        "unique_regions": 37,
+        "percentage": 4.402228514019545,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "приборостроение",
+        "vacancy_count": 367,
+        "with_salary_count": 367,
+        "avg_salary": 115186.12261580382,
+        "unique_employers": 229,
+        "unique_regions": 37,
+        "percentage": 3.35190428349621,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "пищевая",
+        "vacancy_count": 92,
+        "with_salary_count": 92,
+        "avg_salary": 98756.06521739131,
+        "unique_employers": 65,
+        "unique_regions": 24,
+        "percentage": 0.8402593844186684,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 96000.0
+      },
+      {
+        "industry_segment": "машиностроение",
+        "vacancy_count": 79,
+        "with_salary_count": 79,
+        "avg_salary": 121118.86075949368,
+        "unique_employers": 59,
+        "unique_regions": 24,
+        "percentage": 0.7215270800986391,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "vacancy_count": 62,
+        "with_salary_count": 62,
+        "avg_salary": 113189.51612903226,
+        "unique_employers": 52,
+        "unique_regions": 23,
+        "percentage": 0.5662617590647547,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 104500.0
+      }
+    ],
+    "total_segments": 11,
+    "dominant_segment": "другое",
+    "dominant_percentage": 51.93168325874509,
+    "top_segments": [
+      {
+        "industry_segment": "другое",
+        "vacancy_count": 5686,
+        "with_salary_count": 5686,
+        "avg_salary": 100312.2754132958,
+        "unique_employers": 1904,
+        "unique_regions": 44,
+        "percentage": 51.93168325874509,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 90000.0
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "vacancy_count": 1347,
+        "with_salary_count": 1347,
+        "avg_salary": 92959.38307349666,
+        "unique_employers": 382,
+        "unique_regions": 44,
+        "percentage": 12.30249337839072,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 87000.0
+      },
+      {
+        "industry_segment": "строительная",
+        "vacancy_count": 993,
+        "with_salary_count": 993,
+        "avg_salary": 117418.14904330313,
+        "unique_employers": 486,
+        "unique_regions": 44,
+        "percentage": 9.069321399214541,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "энергетика",
+        "vacancy_count": 745,
+        "with_salary_count": 745,
+        "avg_salary": 101266.53288590604,
+        "unique_employers": 448,
+        "unique_regions": 42,
+        "percentage": 6.804274362955522,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 94800.0
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "vacancy_count": 584,
+        "with_salary_count": 584,
+        "avg_salary": 93754.99143835617,
+        "unique_employers": 261,
+        "unique_regions": 43,
+        "percentage": 5.333820440222851,
+        "salary_coverage_percent": 100.0,
+        "median_salary": 85000.0
+      }
+    ]
+  },
+  "position_levels": {
+    "levels": [
+      {
+        "position_level": "рабочий",
+        "vacancy_count": 3413,
+        "avg_salary": 93054.53442719016,
+        "segments_covered": 11,
+        "regions_covered": 44,
+        "percentage": 31.171796511096904,
+        "median_salary": 87352.0
+      },
+      {
+        "position_level": "другое",
+        "vacancy_count": 2906,
+        "avg_salary": 91305.05781142465,
+        "segments_covered": 11,
+        "regions_covered": 44,
+        "percentage": 26.54123664261576,
+        "median_salary": 84000.0
+      },
+      {
+        "position_level": "специалист",
+        "vacancy_count": 1989,
+        "avg_salary": 105934.43891402715,
+        "segments_covered": 11,
+        "regions_covered": 44,
+        "percentage": 18.16604256096447,
+        "median_salary": 96000.0
+      },
+      {
+        "position_level": "инженер",
+        "vacancy_count": 1772,
+        "avg_salary": 116428.60214446952,
+        "segments_covered": 11,
+        "regions_covered": 41,
+        "percentage": 16.18412640423783,
+        "median_salary": 108000.0
+      },
+      {
+        "position_level": "руководитель",
+        "vacancy_count": 869,
+        "avg_salary": 122545.43728423475,
+        "segments_covered": 11,
+        "regions_covered": 44,
+        "percentage": 7.936797881085031,
+        "median_salary": 102000.0
+      }
+    ],
+    "most_demanded_level": "рабочий",
+    "most_demanded_count": 3413,
+    "highest_paid_level": "руководитель",
+    "highest_salary": 122545.43728423475
+  },
+  "salary_comparison": {
+    "by_position_level": [
+      {
+        "position_level": "руководитель",
+        "count": 869,
+        "mean_salary": 122545.43728423475,
+        "min_salary": 24600,
+        "max_salary": 1250000,
+        "median_salary": 102000.0
+      },
+      {
+        "position_level": "инженер",
+        "count": 1772,
+        "mean_salary": 116428.60214446952,
+        "min_salary": 7000,
+        "max_salary": 550000,
+        "median_salary": 108000.0
+      },
+      {
+        "position_level": "специалист",
+        "count": 1989,
+        "mean_salary": 105934.43891402715,
+        "min_salary": 4800,
+        "max_salary": 480000,
+        "median_salary": 96000.0
+      },
+      {
+        "position_level": "рабочий",
+        "count": 3413,
+        "mean_salary": 93054.53442719016,
+        "min_salary": 2,
+        "max_salary": 600000,
+        "median_salary": 87352.0
+      },
+      {
+        "position_level": "другое",
+        "count": 2906,
+        "mean_salary": 91305.05781142465,
+        "min_salary": 174,
+        "max_salary": 420000,
+        "median_salary": 84000.0
+      }
+    ],
+    "by_industry_segment": [
+      {
+        "industry_segment": "машиностроение",
+        "count": 79,
+        "mean_salary": 121118.86075949368,
+        "min_salary": 47750,
+        "max_salary": 379520,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "строительная",
+        "count": 993,
+        "mean_salary": 117418.14904330313,
+        "min_salary": 480,
+        "max_salary": 600000,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "приборостроение",
+        "count": 367,
+        "mean_salary": 115186.12261580382,
+        "min_salary": 33500,
+        "max_salary": 475000,
+        "median_salary": 108000.0
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "count": 62,
+        "mean_salary": 113189.51612903226,
+        "min_salary": 55000,
+        "max_salary": 240000,
+        "median_salary": 104500.0
+      },
+      {
+        "industry_segment": "энергетика",
+        "count": 745,
+        "mean_salary": 101266.53288590604,
+        "min_salary": 4800,
+        "max_salary": 300000,
+        "median_salary": 94800.0
+      },
+      {
+        "industry_segment": "другое",
+        "count": 5686,
+        "mean_salary": 100312.2754132958,
+        "min_salary": 2,
+        "max_salary": 1250000,
+        "median_salary": 90000.0
+      },
+      {
+        "industry_segment": "пищевая",
+        "count": 92,
+        "mean_salary": 98756.06521739131,
+        "min_salary": 42000,
+        "max_salary": 290000,
+        "median_salary": 96000.0
+      },
+      {
+        "industry_segment": "металлургия",
+        "count": 512,
+        "mean_salary": 98117.71875,
+        "min_salary": 3200,
+        "max_salary": 420000,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "химическая",
+        "count": 482,
+        "mean_salary": 95163.53319502075,
+        "min_salary": 7000,
+        "max_salary": 375000,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "count": 584,
+        "mean_salary": 93754.99143835617,
+        "min_salary": 56,
+        "max_salary": 360000,
+        "median_salary": 85000.0
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "count": 1347,
+        "mean_salary": 92959.38307349666,
+        "min_salary": 2500,
+        "max_salary": 402400,
+        "median_salary": 87000.0
+      }
+    ],
+    "engineer_vs_worker": {
+      "engineer_total_count": 1770,
+      "engineer_avg_salary": 115638.60564845071,
+      "worker_total_count": 3413,
+      "worker_avg_salary": 105540.57275706832,
+      "salary_ratio": 1.0956791556800236,
+      "segment_comparison": [
+        {
+          "position_level": "инженер",
+          "count": 14,
+          "avg_salary": 97360.71428571429,
+          "industry_segment": "горнодобывающая"
+        },
+        {
+          "position_level": "инженер",
+          "count": 12,
+          "avg_salary": 124375.0,
+          "industry_segment": "деревообрабатывающая"
+        },
+        {
+          "position_level": "инженер",
+          "count": 1013,
+          "avg_salary": 114868.98617966437,
+          "industry_segment": "другое"
+        },
+        {
+          "position_level": "инженер",
+          "count": 37,
+          "avg_salary": 107210.81081081081,
+          "industry_segment": "машиностроение"
+        },
+        {
+          "position_level": "инженер",
+          "count": 27,
+          "avg_salary": 137450.0,
+          "industry_segment": "металлургия"
+        },
+        {
+          "position_level": "инженер",
+          "count": 67,
+          "avg_salary": 109161.55223880598,
+          "industry_segment": "нефтегазовая"
+        },
+        {
+          "position_level": "инженер",
+          "count": 184,
+          "avg_salary": 128103.08152173914,
+          "industry_segment": "приборостроение"
+        },
+        {
+          "position_level": "инженер",
+          "count": 215,
+          "avg_salary": 124168.13488372094,
+          "industry_segment": "строительная"
+        },
+        {
+          "position_level": "инженер",
+          "count": 95,
+          "avg_salary": 94922.21052631579,
+          "industry_segment": "химическая"
+        },
+        {
+          "position_level": "инженер",
+          "count": 106,
+          "avg_salary": 118765.56603773584,
+          "industry_segment": "энергетика"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 48,
+          "avg_salary": 109755.22916666667,
+          "industry_segment": "горнодобывающая"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 14,
+          "avg_salary": 99739.28571428571,
+          "industry_segment": "деревообрабатывающая"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 1865,
+          "avg_salary": 88058.64128686328,
+          "industry_segment": "другое"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 12,
+          "avg_salary": 189361.66666666666,
+          "industry_segment": "машиностроение"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 244,
+          "avg_salary": 91235.20081967213,
+          "industry_segment": "металлургия"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 280,
+          "avg_salary": 98461.49285714286,
+          "industry_segment": "нефтегазовая"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 52,
+          "avg_salary": 93062.26923076923,
+          "industry_segment": "пищевая"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 110,
+          "avg_salary": 94367.89090909091,
+          "industry_segment": "приборостроение"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 387,
+          "avg_salary": 109463.29198966408,
+          "industry_segment": "строительная"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 72,
+          "avg_salary": 95922.125,
+          "industry_segment": "химическая"
+        },
+        {
+          "position_level": "рабочий",
+          "count": 329,
+          "avg_salary": 91519.20668693009,
+          "industry_segment": "энергетика"
+        }
+      ]
+    }
+  },
+  "dynamics": {
+    "dynamics": [
+      {
+        "period": "2025-10",
+        "vacancy_count": 4157,
+        "avg_salary": 97462.6499879721,
+        "segments_active": 11,
+        "regions_active": 44,
+        "moving_avg": 4157.0
+      },
+      {
+        "period": "2025-11",
+        "vacancy_count": 6792,
+        "avg_salary": 103251.24484687868,
+        "segments_active": 11,
+        "regions_active": 44,
+        "moving_avg": 5474.5
+      }
+    ],
+    "total_periods": 2,
+    "growth_rate": 63.387057974500834,
+    "peak_period": "2025-11",
+    "peak_count": 6792,
+    "trend_slope": 2634.999999999999
+  },
+  "skills": {
+    "stats": {
+      "total_unique_skills": 36.0,
+      "total_skill_mentions": 4087.0,
+      "avg_skills_per_vacancy": 1.8299486175678983
+    },
+    "top_skills": [
+      {
+        "skill_name": "1с",
+        "skill_category": "информационные",
+        "frequency": 483,
+        "unique_vacancies": 483,
+        "segments_covered": 11
+      },
+      {
+        "skill_name": "контроль качества",
+        "skill_category": "химические",
+        "frequency": 433,
+        "unique_vacancies": 433,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "наладка",
+        "skill_category": "технические",
+        "frequency": 347,
+        "unique_vacancies": 347,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "excel",
+        "skill_category": "информационные",
+        "frequency": 330,
+        "unique_vacancies": 330,
+        "segments_covered": 11
+      },
+      {
+        "skill_name": "техническое обслуживание",
+        "skill_category": "технические",
+        "frequency": 305,
+        "unique_vacancies": 305,
+        "segments_covered": 8
+      },
+      {
+        "skill_name": "word",
+        "skill_category": "информационные",
+        "frequency": 246,
+        "unique_vacancies": 246,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "электромонтаж",
+        "skill_category": "электротехнические",
+        "frequency": 246,
+        "unique_vacancies": 246,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "кип",
+        "skill_category": "кипиа_асу_тп",
+        "frequency": 228,
+        "unique_vacancies": 228,
+        "segments_covered": 7
+      },
+      {
+        "skill_name": "autocad",
+        "skill_category": "технические",
+        "frequency": 213,
+        "unique_vacancies": 213,
+        "segments_covered": 9
+      },
+      {
+        "skill_name": "ms office",
+        "skill_category": "информационные",
+        "frequency": 202,
+        "unique_vacancies": 202,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "кипиа",
+        "skill_category": "кипиа_асу_тп",
+        "frequency": 193,
+        "unique_vacancies": 193,
+        "segments_covered": 7
+      },
+      {
+        "skill_name": "чтение чертежей",
+        "skill_category": "технические",
+        "frequency": 133,
+        "unique_vacancies": 133,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "компас",
+        "skill_category": "технические",
+        "frequency": 117,
+        "unique_vacancies": 117,
+        "segments_covered": 7
+      },
+      {
+        "skill_name": "сварка",
+        "skill_category": "производственные",
+        "frequency": 93,
+        "unique_vacancies": 93,
+        "segments_covered": 6
+      },
+      {
+        "skill_name": "ремонт оборудования",
+        "skill_category": "технические",
+        "frequency": 87,
+        "unique_vacancies": 87,
+        "segments_covered": 10
+      },
+      {
+        "skill_name": "автоматизация",
+        "skill_category": "кипиа_асу_тп",
+        "frequency": 76,
+        "unique_vacancies": 76,
+        "segments_covered": 8
+      },
+      {
+        "skill_name": "управление персоналом",
+        "skill_category": "управленческие",
+        "frequency": 75,
+        "unique_vacancies": 75,
+        "segments_covered": 6
+      },
+      {
+        "skill_name": "асутп",
+        "skill_category": "кипиа_асу_тп",
+        "frequency": 58,
+        "unique_vacancies": 58,
+        "segments_covered": 3
+      },
+      {
+        "skill_name": "solidworks",
+        "skill_category": "технические",
+        "frequency": 54,
+        "unique_vacancies": 54,
+        "segments_covered": 6
+      },
+      {
+        "skill_name": "электроснабжение",
+        "skill_category": "электротехнические",
+        "frequency": 44,
+        "unique_vacancies": 44,
+        "segments_covered": 6
+      },
+      {
+        "skill_name": "электрооборудование",
+        "skill_category": "электротехнические",
+        "frequency": 30,
+        "unique_vacancies": 30,
+        "segments_covered": 4
+      },
+      {
+        "skill_name": "метрология",
+        "skill_category": "химические",
+        "frequency": 28,
+        "unique_vacancies": 28,
+        "segments_covered": 5
+      },
+      {
+        "skill_name": "технологические процессы",
+        "skill_category": "химические",
+        "frequency": 22,
+        "unique_vacancies": 22,
+        "segments_covered": 3
+      },
+      {
+        "skill_name": "лабораторные исследования",
+        "skill_category": "химические",
+        "frequency": 7,
+        "unique_vacancies": 7,
+        "segments_covered": 2
+      },
+      {
+        "skill_name": "токарные работы",
+        "skill_category": "производственные",
+        "frequency": 5,
+        "unique_vacancies": 5,
+        "segments_covered": 3
+      }
+    ],
+    "skill_categories": [
+      {
+        "skill_category": "технические",
+        "skill_count": 1261,
+        "unique_skills": 8,
+        "vacancies_with_skills": 1109
+      },
+      {
+        "skill_category": "информационные",
+        "skill_count": 1261,
+        "unique_skills": 4,
+        "vacancies_with_skills": 828
+      },
+      {
+        "skill_category": "кипиа_асу_тп",
+        "skill_count": 556,
+        "unique_skills": 5,
+        "vacancies_with_skills": 327
+      },
+      {
+        "skill_category": "химические",
+        "skill_count": 493,
+        "unique_skills": 5,
+        "vacancies_with_skills": 488
+      },
+      {
+        "skill_category": "электротехнические",
+        "skill_count": 323,
+        "unique_skills": 4,
+        "vacancies_with_skills": 309
+      },
+      {
+        "skill_category": "производственные",
+        "skill_count": 109,
+        "unique_skills": 5,
+        "vacancies_with_skills": 108
+      },
+      {
+        "skill_category": "управленческие",
+        "skill_count": 78,
+        "unique_skills": 2,
+        "vacancies_with_skills": 78
+      },
+      {
+        "skill_category": "безопасность",
+        "skill_count": 6,
+        "unique_skills": 3,
+        "vacancies_with_skills": 3
+      }
+    ]
+  },
+  "regional": {
+    "regions": [
+      {
+        "region": "Московская область",
+        "vacancy_count": 1291,
+        "with_salary_count": 1291,
+        "avg_salary": 110414.66460108443,
+        "segments_present": 11,
+        "unique_employers": 409,
+        "percentage": 11.791031144396749,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Москва",
+        "vacancy_count": 1003,
+        "with_salary_count": 1003,
+        "avg_salary": 130715.19341974078,
+        "segments_present": 11,
+        "unique_employers": 508,
+        "percentage": 9.160653940999177,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Санкт-Петербург",
+        "vacancy_count": 894,
+        "with_salary_count": 894,
+        "avg_salary": 115425.15100671141,
+        "segments_present": 11,
+        "unique_employers": 360,
+        "percentage": 8.165129235546626,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Нижегородская область",
+        "vacancy_count": 571,
+        "with_salary_count": 571,
+        "avg_salary": 96054.3415061296,
+        "segments_present": 11,
+        "unique_employers": 208,
+        "percentage": 5.215088135902822,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Свердловская область",
+        "vacancy_count": 565,
+        "with_salary_count": 565,
+        "avg_salary": 100126.22300884956,
+        "segments_present": 11,
+        "unique_employers": 177,
+        "percentage": 5.16028861083204,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Новосибирская область",
+        "vacancy_count": 545,
+        "with_salary_count": 545,
+        "avg_salary": 88119.83302752294,
+        "segments_present": 11,
+        "unique_employers": 200,
+        "percentage": 4.977623527262764,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Краснодарский край",
+        "vacancy_count": 385,
+        "with_salary_count": 385,
+        "avg_salary": 98577.42597402597,
+        "segments_present": 11,
+        "unique_employers": 150,
+        "percentage": 3.516302858708558,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Владимирская область",
+        "vacancy_count": 382,
+        "with_salary_count": 382,
+        "avg_salary": 85547.94764397906,
+        "segments_present": 10,
+        "unique_employers": 64,
+        "percentage": 3.488903096173167,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Пермский край",
+        "vacancy_count": 367,
+        "with_salary_count": 367,
+        "avg_salary": 84214.17983651227,
+        "segments_present": 9,
+        "unique_employers": 91,
+        "percentage": 3.35190428349621,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ленинградская область",
+        "vacancy_count": 327,
+        "with_salary_count": 327,
+        "avg_salary": 107970.501529052,
+        "segments_present": 10,
+        "unique_employers": 90,
+        "percentage": 2.9865741163576582,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Тульская область",
+        "vacancy_count": 326,
+        "with_salary_count": 326,
+        "avg_salary": 116660.84355828221,
+        "segments_present": 11,
+        "unique_employers": 64,
+        "percentage": 2.9774408621791943,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ростовская область",
+        "vacancy_count": 316,
+        "with_salary_count": 316,
+        "avg_salary": 93063.36075949368,
+        "segments_present": 11,
+        "unique_employers": 114,
+        "percentage": 2.8861083203945563,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Калужская область",
+        "vacancy_count": 298,
+        "with_salary_count": 298,
+        "avg_salary": 103447.8255033557,
+        "segments_present": 11,
+        "unique_employers": 60,
+        "percentage": 2.7217097451822085,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Самарская область",
+        "vacancy_count": 282,
+        "with_salary_count": 282,
+        "avg_salary": 82324.87234042553,
+        "segments_present": 11,
+        "unique_employers": 112,
+        "percentage": 2.575577678326788,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Челябинская область",
+        "vacancy_count": 239,
+        "with_salary_count": 239,
+        "avg_salary": 100028.04184100419,
+        "segments_present": 9,
+        "unique_employers": 86,
+        "percentage": 2.182847748652845,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Омская область",
+        "vacancy_count": 222,
+        "with_salary_count": 222,
+        "avg_salary": 80240.00450450451,
+        "segments_present": 11,
+        "unique_employers": 71,
+        "percentage": 2.027582427618961,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Красноярский край",
+        "vacancy_count": 212,
+        "with_salary_count": 212,
+        "avg_salary": 102009.68867924529,
+        "segments_present": 9,
+        "unique_employers": 98,
+        "percentage": 1.936249885834323,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Воронежская область",
+        "vacancy_count": 201,
+        "with_salary_count": 201,
+        "avg_salary": 92886.51741293533,
+        "segments_present": 11,
+        "unique_employers": 80,
+        "percentage": 1.8357840898712212,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Алтайский край",
+        "vacancy_count": 183,
+        "with_salary_count": 183,
+        "avg_salary": 75548.24043715847,
+        "segments_present": 9,
+        "unique_employers": 73,
+        "percentage": 1.671385514658873,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Саратовская область",
+        "vacancy_count": 182,
+        "with_salary_count": 182,
+        "avg_salary": 80031.35714285714,
+        "segments_present": 9,
+        "unique_employers": 65,
+        "percentage": 1.6622522604804093,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Рязанская область",
+        "vacancy_count": 179,
+        "with_salary_count": 179,
+        "avg_salary": 103817.0502793296,
+        "segments_present": 10,
+        "unique_employers": 64,
+        "percentage": 1.6348524979450176,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Кировская область",
+        "vacancy_count": 171,
+        "with_salary_count": 171,
+        "avg_salary": 77761.7485380117,
+        "segments_present": 10,
+        "unique_employers": 50,
+        "percentage": 1.5617864645173074,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Волгоградская область",
+        "vacancy_count": 151,
+        "with_salary_count": 151,
+        "avg_salary": 82920.75496688741,
+        "segments_present": 10,
+        "unique_employers": 49,
+        "percentage": 1.3791213809480318,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Тверская область",
+        "vacancy_count": 148,
+        "with_salary_count": 148,
+        "avg_salary": 87727.36486486487,
+        "segments_present": 10,
+        "unique_employers": 45,
+        "percentage": 1.3517216184126404,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Кемеровская область",
+        "vacancy_count": 145,
+        "with_salary_count": 145,
+        "avg_salary": 99172.31034482758,
+        "segments_present": 10,
+        "unique_employers": 57,
+        "percentage": 1.3243218558772492,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Иркутская область",
+        "vacancy_count": 142,
+        "with_salary_count": 142,
+        "avg_salary": 99290.99295774648,
+        "segments_present": 9,
+        "unique_employers": 68,
+        "percentage": 1.2969220933418577,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ярославская область",
+        "vacancy_count": 119,
+        "with_salary_count": 119,
+        "avg_salary": 84961.47899159664,
+        "segments_present": 9,
+        "unique_employers": 49,
+        "percentage": 1.0868572472371905,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Мурманская область",
+        "vacancy_count": 117,
+        "with_salary_count": 117,
+        "avg_salary": 123817.73504273505,
+        "segments_present": 6,
+        "unique_employers": 22,
+        "percentage": 1.0685907388802631,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Пензенская область",
+        "vacancy_count": 114,
+        "with_salary_count": 114,
+        "avg_salary": 91731.82456140351,
+        "segments_present": 8,
+        "unique_employers": 38,
+        "percentage": 1.0411909763448717,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ставропольский край",
+        "vacancy_count": 102,
+        "with_salary_count": 102,
+        "avg_salary": 85973.64705882352,
+        "segments_present": 9,
+        "unique_employers": 41,
+        "percentage": 0.9315919262033062,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Тюменская область",
+        "vacancy_count": 95,
+        "with_salary_count": 95,
+        "avg_salary": 81858.0,
+        "segments_present": 9,
+        "unique_employers": 42,
+        "percentage": 0.8676591469540597,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Калининградская область",
+        "vacancy_count": 93,
+        "with_salary_count": 93,
+        "avg_salary": 87039.75268817204,
+        "segments_present": 8,
+        "unique_employers": 27,
+        "percentage": 0.8493926385971321,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Приморский край",
+        "vacancy_count": 76,
+        "with_salary_count": 76,
+        "avg_salary": 103652.5,
+        "segments_present": 8,
+        "unique_employers": 41,
+        "percentage": 0.6941273175632477,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Липецкая область",
+        "vacancy_count": 73,
+        "with_salary_count": 73,
+        "avg_salary": 89482.6301369863,
+        "segments_present": 8,
+        "unique_employers": 30,
+        "percentage": 0.6667275550278564,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Белгородская область",
+        "vacancy_count": 71,
+        "with_salary_count": 71,
+        "avg_salary": 88482.76056338029,
+        "segments_present": 10,
+        "unique_employers": 38,
+        "percentage": 0.6484610466709289,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Хабаровский край",
+        "vacancy_count": 69,
+        "with_salary_count": 69,
+        "avg_salary": 123046.68115942029,
+        "segments_present": 7,
+        "unique_employers": 37,
+        "percentage": 0.6301945383140013,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Костромская область",
+        "vacancy_count": 58,
+        "with_salary_count": 58,
+        "avg_salary": 85708.8275862069,
+        "segments_present": 7,
+        "unique_employers": 24,
+        "percentage": 0.5297287423508996,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Курская область",
+        "vacancy_count": 47,
+        "with_salary_count": 47,
+        "avg_salary": 84370.21276595745,
+        "segments_present": 9,
+        "unique_employers": 25,
+        "percentage": 0.42926294638779794,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Смоленская область",
+        "vacancy_count": 43,
+        "with_salary_count": 43,
+        "avg_salary": 75119.25581395348,
+        "segments_present": 6,
+        "unique_employers": 21,
+        "percentage": 0.3927299296739429,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Оренбургская область",
+        "vacancy_count": 42,
+        "with_salary_count": 42,
+        "avg_salary": 97783.33333333333,
+        "segments_present": 6,
+        "unique_employers": 23,
+        "percentage": 0.38359667549547904,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Орловская область",
+        "vacancy_count": 40,
+        "with_salary_count": 40,
+        "avg_salary": 87436.25,
+        "segments_present": 7,
+        "unique_employers": 18,
+        "percentage": 0.3653301671385515,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Республика Коми",
+        "vacancy_count": 31,
+        "with_salary_count": 31,
+        "avg_salary": 108707.80645161291,
+        "segments_present": 7,
+        "unique_employers": 11,
+        "percentage": 0.28313087953237737,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ямало-Ненецкий АО",
+        "vacancy_count": 18,
+        "with_salary_count": 18,
+        "avg_salary": 117209.11111111111,
+        "segments_present": 5,
+        "unique_employers": 10,
+        "percentage": 0.16439857521234816,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Архангельская область",
+        "vacancy_count": 14,
+        "with_salary_count": 14,
+        "avg_salary": 101525.64285714286,
+        "segments_present": 4,
+        "unique_employers": 10,
+        "percentage": 0.12786555849849301,
+        "salary_coverage_percent": 100.0
+      }
+    ],
+    "top_regions": [
+      {
+        "region": "Московская область",
+        "vacancy_count": 1291,
+        "with_salary_count": 1291,
+        "avg_salary": 110414.66460108443,
+        "segments_present": 11,
+        "unique_employers": 409,
+        "percentage": 11.791031144396749,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Москва",
+        "vacancy_count": 1003,
+        "with_salary_count": 1003,
+        "avg_salary": 130715.19341974078,
+        "segments_present": 11,
+        "unique_employers": 508,
+        "percentage": 9.160653940999177,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Санкт-Петербург",
+        "vacancy_count": 894,
+        "with_salary_count": 894,
+        "avg_salary": 115425.15100671141,
+        "segments_present": 11,
+        "unique_employers": 360,
+        "percentage": 8.165129235546626,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Нижегородская область",
+        "vacancy_count": 571,
+        "with_salary_count": 571,
+        "avg_salary": 96054.3415061296,
+        "segments_present": 11,
+        "unique_employers": 208,
+        "percentage": 5.215088135902822,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Свердловская область",
+        "vacancy_count": 565,
+        "with_salary_count": 565,
+        "avg_salary": 100126.22300884956,
+        "segments_present": 11,
+        "unique_employers": 177,
+        "percentage": 5.16028861083204,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Новосибирская область",
+        "vacancy_count": 545,
+        "with_salary_count": 545,
+        "avg_salary": 88119.83302752294,
+        "segments_present": 11,
+        "unique_employers": 200,
+        "percentage": 4.977623527262764,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Краснодарский край",
+        "vacancy_count": 385,
+        "with_salary_count": 385,
+        "avg_salary": 98577.42597402597,
+        "segments_present": 11,
+        "unique_employers": 150,
+        "percentage": 3.516302858708558,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Владимирская область",
+        "vacancy_count": 382,
+        "with_salary_count": 382,
+        "avg_salary": 85547.94764397906,
+        "segments_present": 10,
+        "unique_employers": 64,
+        "percentage": 3.488903096173167,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Пермский край",
+        "vacancy_count": 367,
+        "with_salary_count": 367,
+        "avg_salary": 84214.17983651227,
+        "segments_present": 9,
+        "unique_employers": 91,
+        "percentage": 3.35190428349621,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Ленинградская область",
+        "vacancy_count": 327,
+        "with_salary_count": 327,
+        "avg_salary": 107970.501529052,
+        "segments_present": 10,
+        "unique_employers": 90,
+        "percentage": 2.9865741163576582,
+        "salary_coverage_percent": 100.0
+      }
+    ],
+    "total_regions": 44,
+    "dominant_region": "Московская область",
+    "dominant_region_percentage": 11.791031144396749,
+    "highest_paid_region": "Москва",
+    "highest_region_salary": 130715.19341974078,
+    "most_diverse_regions": [
+      {
+        "region": "Московская область",
+        "vacancy_count": 1291,
+        "with_salary_count": 1291,
+        "avg_salary": 110414.66460108443,
+        "segments_present": 11,
+        "unique_employers": 409,
+        "percentage": 11.791031144396749,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Москва",
+        "vacancy_count": 1003,
+        "with_salary_count": 1003,
+        "avg_salary": 130715.19341974078,
+        "segments_present": 11,
+        "unique_employers": 508,
+        "percentage": 9.160653940999177,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Санкт-Петербург",
+        "vacancy_count": 894,
+        "with_salary_count": 894,
+        "avg_salary": 115425.15100671141,
+        "segments_present": 11,
+        "unique_employers": 360,
+        "percentage": 8.165129235546626,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Нижегородская область",
+        "vacancy_count": 571,
+        "with_salary_count": 571,
+        "avg_salary": 96054.3415061296,
+        "segments_present": 11,
+        "unique_employers": 208,
+        "percentage": 5.215088135902822,
+        "salary_coverage_percent": 100.0
+      },
+      {
+        "region": "Свердловская область",
+        "vacancy_count": 565,
+        "with_salary_count": 565,
+        "avg_salary": 100126.22300884956,
+        "segments_present": 11,
+        "unique_employers": 177,
+        "percentage": 5.16028861083204,
+        "salary_coverage_percent": 100.0
+      }
+    ]
+  },
+  "industrial_depth": {
+    "segment_level_combinations": [
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "другое",
+        "vacancy_count": 366,
+        "avg_salary": 87070.9480874317,
+        "regions_covered": 43
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "инженер",
+        "vacancy_count": 14,
+        "avg_salary": 97360.71428571429,
+        "regions_covered": 10
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "рабочий",
+        "vacancy_count": 48,
+        "avg_salary": 109755.22916666667,
+        "regions_covered": 21
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "руководитель",
+        "vacancy_count": 45,
+        "avg_salary": 126660.88888888889,
+        "regions_covered": 18
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "специалист",
+        "vacancy_count": 111,
+        "avg_salary": 95080.24324324324,
+        "regions_covered": 31
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "position_level": "другое",
+        "vacancy_count": 18,
+        "avg_salary": 96250.0,
+        "regions_covered": 14
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "position_level": "инженер",
+        "vacancy_count": 12,
+        "avg_salary": 124375.0,
+        "regions_covered": 8
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "position_level": "рабочий",
+        "vacancy_count": 14,
+        "avg_salary": 99739.28571428571,
+        "regions_covered": 8
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "position_level": "руководитель",
+        "vacancy_count": 6,
+        "avg_salary": 173066.66666666666,
+        "regions_covered": 3
+      },
+      {
+        "industry_segment": "деревообрабатывающая",
+        "position_level": "специалист",
+        "vacancy_count": 12,
+        "avg_salary": 113166.66666666667,
+        "regions_covered": 10
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "другое",
+        "vacancy_count": 1448,
+        "avg_salary": 95882.79005524862,
+        "regions_covered": 42
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "инженер",
+        "vacancy_count": 1013,
+        "avg_salary": 114868.98617966437,
+        "regions_covered": 41
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "рабочий",
+        "vacancy_count": 1865,
+        "avg_salary": 88058.64128686328,
+        "regions_covered": 43
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "руководитель",
+        "vacancy_count": 227,
+        "avg_salary": 148102.93392070485,
+        "regions_covered": 39
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "специалист",
+        "vacancy_count": 1133,
+        "avg_salary": 103553.66548984995,
+        "regions_covered": 44
+      },
+      {
+        "industry_segment": "машиностроение",
+        "position_level": "инженер",
+        "vacancy_count": 37,
+        "avg_salary": 107210.81081081081,
+        "regions_covered": 19
+      },
+      {
+        "industry_segment": "машиностроение",
+        "position_level": "рабочий",
+        "vacancy_count": 12,
+        "avg_salary": 189361.66666666666,
+        "regions_covered": 6
+      },
+      {
+        "industry_segment": "машиностроение",
+        "position_level": "специалист",
+        "vacancy_count": 27,
+        "avg_salary": 103527.77777777778,
+        "regions_covered": 13
+      },
+      {
+        "industry_segment": "металлургия",
+        "position_level": "другое",
+        "vacancy_count": 166,
+        "avg_salary": 81508.90963855422,
+        "regions_covered": 33
+      },
+      {
+        "industry_segment": "металлургия",
+        "position_level": "инженер",
+        "vacancy_count": 27,
+        "avg_salary": 137450.0,
+        "regions_covered": 14
+      },
+      {
+        "industry_segment": "металлургия",
+        "position_level": "рабочий",
+        "vacancy_count": 244,
+        "avg_salary": 91235.20081967213,
+        "regions_covered": 35
+      },
+      {
+        "industry_segment": "металлургия",
+        "position_level": "руководитель",
+        "vacancy_count": 17,
+        "avg_salary": 155596.4705882353,
+        "regions_covered": 11
+      },
+      {
+        "industry_segment": "металлургия",
+        "position_level": "специалист",
+        "vacancy_count": 58,
+        "avg_salary": 139450.24137931035,
+        "regions_covered": 24
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "другое",
+        "vacancy_count": 413,
+        "avg_salary": 78965.97336561744,
+        "regions_covered": 40
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "инженер",
+        "vacancy_count": 67,
+        "avg_salary": 109161.55223880598,
+        "regions_covered": 21
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "рабочий",
+        "vacancy_count": 280,
+        "avg_salary": 98461.49285714286,
+        "regions_covered": 41
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "руководитель",
+        "vacancy_count": 487,
+        "avg_salary": 98905.58316221766,
+        "regions_covered": 44
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "специалист",
+        "vacancy_count": 100,
+        "avg_salary": 95532.81,
+        "regions_covered": 28
+      },
+      {
+        "industry_segment": "пищевая",
+        "position_level": "другое",
+        "vacancy_count": 18,
+        "avg_salary": 101638.88888888889,
+        "regions_covered": 7
+      },
+      {
+        "industry_segment": "пищевая",
+        "position_level": "рабочий",
+        "vacancy_count": 52,
+        "avg_salary": 93062.26923076923,
+        "regions_covered": 18
+      },
+      {
+        "industry_segment": "пищевая",
+        "position_level": "специалист",
+        "vacancy_count": 16,
+        "avg_salary": 97231.25,
+        "regions_covered": 9
+      },
+      {
+        "industry_segment": "приборостроение",
+        "position_level": "другое",
+        "vacancy_count": 41,
+        "avg_salary": 93096.09756097561,
+        "regions_covered": 18
+      },
+      {
+        "industry_segment": "приборостроение",
+        "position_level": "инженер",
+        "vacancy_count": 184,
+        "avg_salary": 128103.08152173914,
+        "regions_covered": 32
+      },
+      {
+        "industry_segment": "приборостроение",
+        "position_level": "рабочий",
+        "vacancy_count": 110,
+        "avg_salary": 94367.89090909091,
+        "regions_covered": 34
+      },
+      {
+        "industry_segment": "приборостроение",
+        "position_level": "специалист",
+        "vacancy_count": 28,
+        "avg_salary": 129426.14285714286,
+        "regions_covered": 10
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "другое",
+        "vacancy_count": 187,
+        "avg_salary": 104455.03743315508,
+        "regions_covered": 36
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "инженер",
+        "vacancy_count": 215,
+        "avg_salary": 124168.13488372094,
+        "regions_covered": 40
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "рабочий",
+        "vacancy_count": 387,
+        "avg_salary": 109463.29198966408,
+        "regions_covered": 42
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "руководитель",
+        "vacancy_count": 51,
+        "avg_salary": 192713.72549019608,
+        "regions_covered": 24
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "специалист",
+        "vacancy_count": 153,
+        "avg_salary": 118799.2614379085,
+        "regions_covered": 31
+      },
+      {
+        "industry_segment": "химическая",
+        "position_level": "другое",
+        "vacancy_count": 189,
+        "avg_salary": 77444.26455026455,
+        "regions_covered": 36
+      },
+      {
+        "industry_segment": "химическая",
+        "position_level": "инженер",
+        "vacancy_count": 95,
+        "avg_salary": 94922.21052631579,
+        "regions_covered": 23
+      },
+      {
+        "industry_segment": "химическая",
+        "position_level": "рабочий",
+        "vacancy_count": 72,
+        "avg_salary": 95922.125,
+        "regions_covered": 21
+      },
+      {
+        "industry_segment": "химическая",
+        "position_level": "руководитель",
+        "vacancy_count": 17,
+        "avg_salary": 154664.70588235295,
+        "regions_covered": 10
+      },
+      {
+        "industry_segment": "химическая",
+        "position_level": "специалист",
+        "vacancy_count": 109,
+        "avg_salary": 116317.00917431193,
+        "regions_covered": 26
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "другое",
+        "vacancy_count": 59,
+        "avg_salary": 114980.1186440678,
+        "regions_covered": 29
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "инженер",
+        "vacancy_count": 106,
+        "avg_salary": 118765.56603773584,
+        "regions_covered": 31
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "рабочий",
+        "vacancy_count": 329,
+        "avg_salary": 91519.20668693009,
+        "regions_covered": 41
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "руководитель",
+        "vacancy_count": 9,
+        "avg_salary": 107388.88888888889,
+        "regions_covered": 7
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "специалист",
+        "vacancy_count": 242,
+        "avg_salary": 103282.11157024793,
+        "regions_covered": 36
+      }
+    ],
+    "top_combinations": [
+      {
+        "industry_segment": "другое",
+        "position_level": "рабочий",
+        "vacancy_count": 1865,
+        "avg_salary": 88058.64128686328,
+        "regions_covered": 43
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "другое",
+        "vacancy_count": 1448,
+        "avg_salary": 95882.79005524862,
+        "regions_covered": 42
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "специалист",
+        "vacancy_count": 1133,
+        "avg_salary": 103553.66548984995,
+        "regions_covered": 44
+      },
+      {
+        "industry_segment": "другое",
+        "position_level": "инженер",
+        "vacancy_count": 1013,
+        "avg_salary": 114868.98617966437,
+        "regions_covered": 41
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "руководитель",
+        "vacancy_count": 487,
+        "avg_salary": 98905.58316221766,
+        "regions_covered": 44
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "другое",
+        "vacancy_count": 413,
+        "avg_salary": 78965.97336561744,
+        "regions_covered": 40
+      },
+      {
+        "industry_segment": "строительная",
+        "position_level": "рабочий",
+        "vacancy_count": 387,
+        "avg_salary": 109463.29198966408,
+        "regions_covered": 42
+      },
+      {
+        "industry_segment": "горнодобывающая",
+        "position_level": "другое",
+        "vacancy_count": 366,
+        "avg_salary": 87070.9480874317,
+        "regions_covered": 43
+      },
+      {
+        "industry_segment": "энергетика",
+        "position_level": "рабочий",
+        "vacancy_count": 329,
+        "avg_salary": 91519.20668693009,
+        "regions_covered": 41
+      },
+      {
+        "industry_segment": "нефтегазовая",
+        "position_level": "рабочий",
+        "vacancy_count": 280,
+        "avg_salary": 98461.49285714286,
+        "regions_covered": 41
+      }
+    ],
+    "industrial_keywords": [
+      {
+        "industrial_keywords": "инженер",
+        "frequency": 1298
+      },
+      {
+        "industrial_keywords": "оператор",
+        "frequency": 1180
+      },
+      {
+        "industrial_keywords": "технолог",
+        "frequency": 622
+      },
+      {
+        "industrial_keywords": "технолог, инженер",
+        "frequency": 356
+      },
+      {
+        "industrial_keywords": "монтажник",
+        "frequency": 324
+      },
+      {
+        "industrial_keywords": "конструктор, инженер",
+        "frequency": 216
+      },
+      {
+        "industrial_keywords": "механик",
+        "frequency": 196
+      },
+      {
+        "industrial_keywords": "машинист",
+        "frequency": 189
+      },
+      {
+        "industrial_keywords": "ремонтник",
+        "frequency": 159
+      },
+      {
+        "industrial_keywords": "сварщик",
+        "frequency": 151
+      },
+      {
+        "industrial_keywords": "электрик",
+        "frequency": 148
+      },
+      {
+        "industrial_keywords": "аппаратчик",
+        "frequency": 117
+      },
+      {
+        "industrial_keywords": "наладчик",
+        "frequency": 95
+      },
+      {
+        "industrial_keywords": "механик, инженер",
+        "frequency": 77
+      },
+      {
+        "industrial_keywords": "технолог, оператор",
+        "frequency": 76
+      },
+      {
+        "industrial_keywords": "конструктор, технолог, инженер",
+        "frequency": 74
+      },
+      {
+        "industrial_keywords": "токарь",
+        "frequency": 71
+      },
+      {
+        "industrial_keywords": "электрик, инженер",
+        "frequency": 58
+      },
+      {
+        "industrial_keywords": "наладчик, оператор",
+        "frequency": 54
+      },
+      {
+        "industrial_keywords": "конструктор",
+        "frequency": 53
+      }
+    ]
+  },
+  "key_findings": [
+    "Собран репрезентативный объем данных: 10,949 промышленных вакансий",
+    "Наибольшее количество вакансий в сегменте: другое (51.9%)",
+    "Наиболее востребованы специалисты уровня: рабочий",
+    "Инженеры получают в 1.1 раз больше рабочих",
+    "Положительная динамика спроса: +63.4% за период",
+    "Лидирующий регион: Московская область (11.8% вакансий)"
+  ]
+}
