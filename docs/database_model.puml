@@ -1,0 +1,159 @@
+@startuml Database Model
+!define PK_COLOR #FFD700
+!define FK_COLOR #87CEEB
+!define TABLE_COLOR #E6F3FF
+
+skinparam linetype ortho
+skinparam roundcorner 10
+skinparam shadowing true
+
+title Модель данных: Анализ промышленных вакансий\nОбъем БД: 1,179,419 записей | Уникальных вакансий: 218,788
+
+package "База данных industrial_vacancies" {
+  
+  entity "vacancies" as vacancies TABLE_COLOR {
+    **id** : INTEGER <<PK>> PK_COLOR
+    --
+    hh_id : TEXT <<UNIQUE>>
+    name : TEXT <<NOT NULL>>
+    name_cleaned : TEXT
+    --
+    * Локация *
+    area : TEXT
+    area_id : INTEGER
+    region : TEXT
+    --
+    * Зарплата *
+    salary_from : INTEGER
+    salary_to : INTEGER
+    salary_currency : TEXT
+    salary_avg_rub : INTEGER
+    --
+    * Опыт и график *
+    experience : TEXT
+    schedule : TEXT
+    employment : TEXT
+    --
+    * Работодатель *
+    employer_name : TEXT
+    employer_id : TEXT
+    employer_trusted : INTEGER
+    --
+    * Классификация *
+    industry_segment : TEXT
+    position_level : TEXT
+    professional_roles : TEXT
+    industrial_keywords : TEXT
+    --
+    key_skills_json : TEXT
+    --
+    * Временные метки *
+    published_at : TIMESTAMP
+    created_at : TIMESTAMP
+    collected_at : TIMESTAMP
+    --
+    collection_method : TEXT
+    collection_source : TEXT
+    snippet_requirement : TEXT
+    snippet_responsibility : TEXT
+    --
+    has_salary : INTEGER <<DEFAULT 0>>
+    is_industrial : INTEGER <<DEFAULT 1>>
+    ..
+    **Индексы:**
+    idx_area, idx_salary_avg, idx_published_at
+    idx_industry_segment, idx_position_level
+    idx_region, idx_employer, idx_experience
+    idx_industrial, idx_salary_range
+    idx_date_region, idx_level_segment
+  }
+
+  entity "skills" as skills TABLE_COLOR {
+    **id** : INTEGER <<PK, AUTOINCREMENT>> PK_COLOR
+    --
+    vacancy_id : INTEGER <<FK>> FK_COLOR
+    skill_name : TEXT
+    skill_category : TEXT
+    frequency_rank : INTEGER
+    ..
+    **Индексы:**
+    idx_skill_name, idx_vacancy_id
+    idx_skill_category, idx_frequency
+  }
+
+  entity "regions" as regions TABLE_COLOR {
+    **region_id** : INTEGER <<PK>> PK_COLOR
+    --
+    region_name : TEXT
+    federal_district : TEXT
+    industrial_rank : INTEGER
+    vacancy_count : INTEGER <<DEFAULT 0>>
+    avg_salary : INTEGER <<DEFAULT 0>>
+    ..
+    **Индексы:**
+    idx_region_name, idx_federal_district
+  }
+
+  entity "industry_segments" as segments TABLE_COLOR {
+    **segment_name** : TEXT <<PK>> PK_COLOR
+    --
+    total_vacancies : INTEGER <<DEFAULT 0>>
+    avg_salary : INTEGER <<DEFAULT 0>>
+    growth_rate : REAL <<DEFAULT 0>>
+    key_skills : TEXT
+    ..
+    **Индексы:**
+    idx_segment_name
+  }
+
+  entity "time_series" as timeseries TABLE_COLOR {
+    **id** : INTEGER <<PK, AUTOINCREMENT>> PK_COLOR
+    --
+    period_date : DATE
+    period_type : TEXT
+    vacancy_count : INTEGER
+    avg_salary : INTEGER
+    segment_name : TEXT
+    region : TEXT
+    ..
+    **Индексы:**
+    idx_period_date, idx_period_type
+    idx_segment_region
+  }
+
+  ' Связи
+  vacancies ||--o{ skills : "has"
+  
+  note right of vacancies
+    Основная таблица вакансий
+    ~1.2M записей
+    ~219K уникальных
+  end note
+  
+  note right of skills
+    Нормализованные навыки
+    Связь Many-to-Many
+  end note
+
+}
+
+legend right
+  |= Цвет |= Обозначение |
+  | <#FFD700>  | Первичный ключ (PK) |
+  | <#87CEEB>  | Внешний ключ (FK) |
+  | <#E6F3FF>  | Таблица |
+  
+  **Характеристики датасета:**
+  * Анализируемый период: 2 месяца
+  * Еженедельный запрос: ~5,000 запросов
+  * Всего запросов: ~50,000
+  * Еженедельный сбор: ~300,000 вакансий
+  * Всего собрано: ~3,000,000
+  * Отфильтровано: ~2,781,212
+  * Объем БД: 1,179,419 записей
+  * Уникальных вакансий: 218,788
+  * Время сбора: 23 мин/неделю
+endlegend
+
+@enduml
+

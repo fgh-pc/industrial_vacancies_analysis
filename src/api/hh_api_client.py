@@ -308,7 +308,7 @@ class UltraIndustrialClient:
                     industrial_industries[industry_id] = industry
                     self.industrial_industry_ids.add(industry_id)
         
-        self.logger.info(f"🏭 Найдено промышленных отраслей: {len(industrial_industries)}")
+        self.logger.info(f" Найдено промышленных отраслей: {len(industrial_industries)}")
         return industrial_industries
 
     async def get_industrial_professional_roles(self) -> Dict[str, Dict]:
@@ -329,7 +329,7 @@ class UltraIndustrialClient:
                         industrial_roles[role_id] = role
                         self.industrial_professional_role_ids.add(role_id)
         
-        self.logger.info(f"🔧 Найдено промышленных ролей: {len(industrial_roles)}")
+        self.logger.info(f" Найдено промышленных ролей: {len(industrial_roles)}")
         return industrial_roles
 
     async def get_all_russian_regions(self) -> Dict[str, int]:

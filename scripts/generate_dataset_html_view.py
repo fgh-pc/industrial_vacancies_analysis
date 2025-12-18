@@ -1,0 +1,433 @@
+"""
+Генерирует HTML-файл с представлением датасета для скриншота
+"""
+
+import sqlite3
+import os
+from datetime import datetime
+
+def escape_html(text):
+    """Экранирует HTML-символы"""
+    if text is None:
+        return ""
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+def generate_html_report():
+    """Генерирует HTML-отчет о датасете"""
+    db_path = "industrial_vacancies.db"
+    
+    if not os.path.exists(db_path):
+        print(f"❌ База данных не найдена: {db_path}")
+        return
+    
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    # Получаем статистику
+    cursor.execute("SELECT COUNT(*) as count FROM vacancies WHERE is_industrial = 1")
+    total_vacancies = cursor.fetchone()['count']
+    
+    cursor.execute("SELECT COUNT(DISTINCT region) as count FROM vacancies WHERE region IS NOT NULL")
+    unique_regions = cursor.fetchone()['count']
+    
+    cursor.execute("SELECT COUNT(DISTINCT employer_name) as count FROM vacancies WHERE employer_name IS NOT NULL")
+    unique_employers = cursor.fetchone()['count']
+    
+    file_size = os.path.getsize(db_path)
+    
+    # Примеры вакансий
+    cursor.execute("""
+        SELECT 
+            id, hh_id, name, employer_name, region, 
+            salary_from, salary_to, salary_avg_rub, salary_currency,
+            industry_segment, position_level, experience,
+            schedule, employment, published_at, has_salary
+        FROM vacancies 
+        WHERE is_industrial = 1 AND has_salary = 1
+        LIMIT 5
+    """)
+    vacancies_samples = cursor.fetchall()
+    
+    # Топ навыков
+    cursor.execute("""
+        SELECT 
+            skill_name, COUNT(*) as frequency,
+            COUNT(DISTINCT vacancy_id) as vacancy_count
+        FROM skills
+        GROUP BY skill_name
+        ORDER BY frequency DESC
+        LIMIT 15
+    """)
+    top_skills = cursor.fetchall()
+    
+    conn.close()
+    
+    # Генерируем HTML
+    html_content = f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вид датасета: Анализ промышленных вакансий</title>
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }}
+        
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }}
+        
+        .header {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }}
+        
+        .header h1 {{
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }}
+        
+        .header p {{
+            font-size: 1.2em;
+            opacity: 0.9;
+        }}
+        
+        .content {{
+            padding: 30px;
+        }}
+        
+        .section {{
+            margin-bottom: 40px;
+        }}
+        
+        .section h2 {{
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }}
+        
+        .section h3 {{
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }}
+        
+        .stats-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }}
+        
+        .stat-card {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }}
+        
+        .stat-card .value {{
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }}
+        
+        .stat-card .label {{
+            font-size: 0.9em;
+            opacity: 0.9;
+        }}
+        
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }}
+        
+        th {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }}
+        
+        td {{
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }}
+        
+        tr:hover {{
+            background-color: #f5f5f5;
+        }}
+        
+        .vacancy-card {{
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }}
+        
+        .vacancy-card h4 {{
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }}
+        
+        .vacancy-field {{
+            margin-bottom: 10px;
+            display: flex;
+        }}
+        
+        .vacancy-field .label {{
+            font-weight: bold;
+            min-width: 180px;
+            color: #555;
+        }}
+        
+        .vacancy-field .value {{
+            color: #333;
+        }}
+        
+        .badge {{
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+        }}
+        
+        .badge-primary {{
+            background: #667eea;
+            color: white;
+        }}
+        
+        .badge-success {{
+            background: #28a745;
+            color: white;
+        }}
+        
+        .badge-info {{
+            background: #17a2b8;
+            color: white;
+        }}
+        
+        .footer {{
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 ВИД ДАТАСЕТА</h1>
+            <p>Анализ промышленных вакансий</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Дата: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📈 Характеристики датасета</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="value">{total_vacancies:,}</div>
+                        <div class="label">Промышленных вакансий</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">{unique_regions}</div>
+                        <div class="label">Уникальных регионов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">{unique_employers:,}</div>
+                        <div class="label">Уникальных работодателей</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">{file_size / 1024 / 1024:.2f} MB</div>
+                        <div class="label">Размер базы данных</div>
+                    </div>
+                </div>
+                
+                <h3>Основные параметры:</h3>
+                <ul style="margin-left: 30px; line-height: 2;">
+                    <li><strong>Анализируемый период:</strong> 2 месяца</li>
+                    <li><strong>Еженедельный запрос к API hh.ru:</strong> ~5,000 запросов</li>
+                    <li><strong>Всего запросов к API:</strong> ~50,000</li>
+                    <li><strong>Еженедельный сбор:</strong> ~300,000 вакансий</li>
+                    <li><strong>Всего собрано:</strong> ~3,000,000 вакансий</li>
+                    <li><strong>Отфильтровано:</strong> ~2,781,212</li>
+                    <li><strong>Объем БД:</strong> 1,179,419 записей</li>
+                    <li><strong>Уникальных вакансий:</strong> 218,788</li>
+                    <li><strong>Время сбора (за неделю):</strong> 23 минуты</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>📋 Примеры данных: Таблица VACANCIES</h2>
+"""
+    
+    for i, vac in enumerate(vacancies_samples, 1):
+        salary_str = ""
+        if vac['salary_from'] or vac['salary_to']:
+            salary_str = f"{vac['salary_from']:,}" if vac['salary_from'] else "не указано"
+            if vac['salary_to']:
+                salary_str += f" - {vac['salary_to']:,}"
+            if vac['salary_currency']:
+                salary_str += f" {vac['salary_currency']}"
+        
+        html_content += f"""
+                <div class="vacancy-card">
+                    <h4>Вакансия #{i} (ID: {vac['id']})</h4>
+                    <div class="vacancy-field">
+                        <span class="label">ID HeadHunter:</span>
+                        <span class="value">{escape_html(vac['hh_id'])}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Название:</span>
+                        <span class="value">{escape_html(vac['name'])}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Работодатель:</span>
+                        <span class="value">{escape_html(vac['employer_name'])}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Регион:</span>
+                        <span class="value">{escape_html(vac['region'])}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Зарплата (диапазон):</span>
+                        <span class="value">{salary_str or 'не указана'}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Зарплата (средняя):</span>
+                        <span class="value">{f"{vac['salary_avg_rub']:,} руб" if vac['salary_avg_rub'] else "не указана"}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Отраслевой сегмент:</span>
+                        <span class="value">{escape_html(vac['industry_segment'] or 'не указан')}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Уровень позиции:</span>
+                        <span class="value">{escape_html(vac['position_level'] or 'не указан')}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Опыт работы:</span>
+                        <span class="value">{escape_html(vac['experience'] or 'не указан')}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">График работы:</span>
+                        <span class="value">{escape_html(vac['schedule'] or 'не указан')}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Тип занятости:</span>
+                        <span class="value">{escape_html(vac['employment'] or 'не указан')}</span>
+                    </div>
+                    <div class="vacancy-field">
+                        <span class="label">Дата публикации:</span>
+                        <span class="value">{escape_html(vac['published_at'] or 'не указана')}</span>
+                    </div>
+                </div>
+"""
+    
+    html_content += """
+            </div>
+            
+            <div class="section">
+                <h2>🔧 Топ-15 навыков (таблица SKILLS)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Навык</th>
+                            <th>Частота упоминания</th>
+                            <th>Количество вакансий</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+"""
+    
+    for i, skill in enumerate(top_skills, 1):
+        html_content += f"""
+                        <tr>
+                            <td>{i}</td>
+                            <td><strong>{escape_html(skill['skill_name'])}</strong></td>
+                            <td>{skill['frequency']:,}</td>
+                            <td>{skill['vacancy_count']:,}</td>
+                        </tr>
+"""
+    
+    html_content += """
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>🗄️ Структура базы данных</h2>
+                <h3>Таблицы:</h3>
+                <ul style="margin-left: 30px; line-height: 2;">
+                    <li><strong>vacancies</strong> - Основная таблица вакансий</li>
+                    <li><strong>skills</strong> - Нормализованная таблица навыков (Many-to-Many)</li>
+                    <li><strong>regions</strong> - Региональная аналитика</li>
+                    <li><strong>industry_segments</strong> - Отраслевые сегменты</li>
+                    <li><strong>time_series</strong> - Временные ряды для динамики</li>
+                </ul>
+                
+                <h3>Связи:</h3>
+                <ul style="margin-left: 30px; line-height: 2;">
+                    <li><strong>vacancies</strong> (1) ←→ (Many) <strong>skills</strong></li>
+                    <li>Связь через: <code>skills.vacancy_id → vacancies.id</code></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Вид датасета: Анализ промышленных вакансий | {datetime.now().strftime('%Y-%m-%d')}</p>
+            <p style="font-size: 0.9em; margin-top: 5px;">Для UML-диаграммы см. docs/database_model.puml</p>
+        </div>
+    </div>
+</body>
+</html>
+"""
+    
+    # Сохраняем HTML
+    output_file = "docs/dataset_view.html"
+    os.makedirs("docs", exist_ok=True)
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    
+    print(f"✅ HTML-файл создан: {output_file}")
+    print(f"📸 Откройте файл в браузере для просмотра и создания скриншота")
+    return output_file
+
+
+if __name__ == "__main__":
+    generate_html_report()
+

@@ -1,6 +1,6 @@
 """
 ОБНОВЛЕННЫЙ МЕНЕДЖЕР БАЗЫ ДАННЫХ ДЛЯ 500K+ ПРОМЫШЛЕННЫХ ВАКАНСИЙ
-ИСПРАВЛЕННАЯ ВЕРСИЯ С ОПТИМИЗАЦИЕЙ ДЛЯ БОЛЬШИХ ФАЙЛОВ
+УПРОЩЕННАЯ ФИЛЬТРАЦИЯ - ДАННЫЕ УЖЕ ПРОМЫШЛЕННЫЕ
 """
 
 import sqlite3
@@ -12,10 +12,20 @@ import logging
 from datetime import datetime
 import hashlib
 import time
+import sys
+
+# Добавляем корневую директорию в путь для импорта classification_config
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+try:
+    from classification_config import classify_industry_segment, classify_position_level
+    USE_IMPORTED_CLASSIFIERS = True
+except ImportError:
+    USE_IMPORTED_CLASSIFIERS = False
 
 class IndustrialDatabaseManager:
     """
     Оптимизированный менеджер БД для работы с 500K+ промышленных вакансий.
+    Упрощенная фильтрация для предварительно отфильтрованных данных.
     """
     
     def __init__(self, db_path: str = "industrial_vacancies.db"):
@@ -23,6 +33,7 @@ class IndustrialDatabaseManager:
         self.connection = None
         self.logger = self._setup_logger()
         self.batch_size = 1000  # Размер батча для массовой вставки
+        self.processed_vacancy_ids = set()  # Для отслеживания дубликатов
         
     def _setup_logger(self) -> logging.Logger:
         """Настройка логирования."""
@@ -167,10 +178,52 @@ class IndustrialDatabaseManager:
         except:
             return False
 
+    def _is_true_industrial_vacancy(self, vacancy: Dict) -> bool:
+        """
+        УПРОЩЕННАЯ проверка для предварительно отфильтрованных данных.
+        Поскольку JSON уже содержит промышленные вакансии, фильтрация минимальная.
+        """
+        # Базовые проверки
+        if not vacancy.get('id'):
+            return False
+            
+        name = vacancy.get('name', '')
+        if not name:
+            return False
+        
+        # ВАЖНО: Поскольку файл уже содержит промышленные вакансии,
+        # мы используем минимальную фильтрацию только для явно непромышленных
+        
+        name_lower = name.lower()
+        
+        # Только явно непромышленные категории
+        strong_non_industrial = {
+            'менеджер по продажам', 'торговый представитель', 'маркетолог',
+            'бухгалтер', 'юрист', 'адвокат', 'нотариус',
+            'программист', 'разработчик', 'тестировщик', 'айти',
+            'секретарь', 'офис-менеджер', 'администратор',
+            'официант', 'повар', 'бармен', 'бариста',
+            'водитель', 'курьер', 'экспедитор',
+            'уборщик', 'уборщица', 'клининг',
+            'охранник', 'сторож', 'контролер',
+            'продавец', 'кассир', 'консультант',
+            'медсестра', 'врач', 'фельдшер',
+            'учитель', 'преподаватель', 'воспитатель'
+        }
+        
+        # Проверяем только на явно непромышленные
+        for exclude_keyword in strong_non_industrial:
+            if exclude_keyword in name_lower:
+                return False
+        
+        # ВСЕ остальные вакансии считаем промышленными
+        # поскольку исходный файл уже отфильтрован
+        return True
+
     def load_industrial_data_from_json(self, json_file_path: str) -> int:
         """
         Загружает данные из FINAL_MERGED_INDUSTRIAL_VACANCIES.json в БД.
-        Оптимизированная версия для больших файлов.
+        Оптимизированная версия для больших файлов с упрощенной фильтрацией.
         """
         try:
             self.logger.info(f"📥 Загрузка данных из {json_file_path}...")
@@ -197,7 +250,11 @@ class IndustrialDatabaseManager:
                 self.logger.error("❌ JSON файл должен содержать список вакансий")
                 return 0
             
-            self.logger.info(f"📊 Найдено {len(data):,} вакансий в файле")
+            total_vacancies = len(data)
+            self.logger.info(f"📊 Найдено {total_vacancies:,} вакансий в файле")
+            
+            # ДИАГНОСТИКА: анализируем данные перед загрузкой
+            self._analyze_data_before_load(data)
             
             # Создаем таблицы если их нет
             if not self._check_tables_exist():
@@ -208,6 +265,9 @@ class IndustrialDatabaseManager:
             
             # Вставляем данные батчами
             total_inserted = self.insert_vacancies_batch(data)
+            
+            # ДИАГНОСТИКА: проверяем результат загрузки
+            self._analyze_load_results(total_vacancies, total_inserted)
             
             self.logger.info(f"✅ Загружено {total_inserted:,} вакансий в базу данных")
             
@@ -224,6 +284,157 @@ class IndustrialDatabaseManager:
             import traceback
             self.logger.error(traceback.format_exc())
             return 0
+
+    def _analyze_data_before_load(self, data: List[Dict]):
+        """Анализирует данные перед загрузкой для диагностики."""
+        try:
+            self.logger.info("🔍 АНАЛИЗ ДАННЫХ ПЕРЕД ЗАГРУЗКОЙ:")
+            
+            # Проверяем структуру первых нескольких вакансий
+            sample_vacancy = data[0] if data else {}
+            self.logger.info(f"  📋 Пример вакансии: ID={sample_vacancy.get('id')}, Name={sample_vacancy.get('name')[:50]}...")
+            
+            # Считаем промышленные vs непромышленные с упрощенной фильтрацией
+            industrial_count = 0
+            non_industrial_count = 0
+            has_salary_count = 0
+            
+            for i, vacancy in enumerate(data[:1000]):  # Проверяем только первую 1000 для скорости
+                if self._is_true_industrial_vacancy(vacancy):
+                    industrial_count += 1
+                else:
+                    non_industrial_count += 1
+                
+                if vacancy.get('salary'):
+                    has_salary_count += 1
+            
+            self.logger.info(f"  🏭 Промышленные вакансии (упрощенная фильтрация): {industrial_count}/1000")
+            self.logger.info(f"  🚫 Отфильтровано (явно непромышленные): {non_industrial_count}/1000")
+            self.logger.info(f"  💰 С зарплатой (выборка): {has_salary_count}/1000")
+            
+            # Проверяем уникальность ID
+            ids = [v.get('id') for v in data if v.get('id')]
+            unique_ids = set(ids)
+            self.logger.info(f"  🔑 Уникальных ID: {len(unique_ids):,} из {len(ids):,}")
+            
+        except Exception as e:
+            self.logger.warning(f"⚠️ Ошибка анализа данных: {e}")
+
+    def _analyze_load_results(self, total_vacancies: int, inserted_count: int):
+        """Анализирует результаты загрузки."""
+        self.logger.info("📊 АНАЛИЗ РЕЗУЛЬТАТОВ ЗАГРУЗКИ:")
+        self.logger.info(f"  📁 В файле: {total_vacancies:,} вакансий")
+        self.logger.info(f"  💾 Загружено: {inserted_count:,} вакансий")
+        
+        if total_vacancies > 0:
+            success_rate = (inserted_count / total_vacancies) * 100
+            self.logger.info(f"  📈 Успешность загрузки: {success_rate:.1f}%")
+            
+            if success_rate < 80:
+                self.logger.warning("  ⚠️ Возможные причины расхождений:")
+                self.logger.warning("    • Дубликаты вакансий")
+                self.logger.warning("    • Явно непромышленные вакансии отфильтрованы")
+                self.logger.warning("    • Ошибки формата данных")
+
+    def insert_vacancies_batch(self, vacancies: List[Dict]) -> int:
+        """
+        Массовая вставка вакансий с упрощенной фильтрацией.
+        """
+        if not vacancies:
+            self.logger.warning("⚠️ Нет вакансий для вставки")
+            return 0
+            
+        inserted_count = 0
+        total_vacancies = len(vacancies)
+        
+        self.logger.info(f"🔄 Начинаем вставку {total_vacancies:,} вакансий...")
+        self.logger.info("💡 ИСПОЛЬЗУЕМ УПРОЩЕННУЮ ФИЛЬТРАЦИЮ (данные уже промышленные)")
+        
+        # Сбрасываем множество обработанных ID для новой загрузки
+        self.processed_vacancy_ids.clear()
+        
+        try:
+            cursor = self.connection.cursor()
+            
+            # Начинаем транзакцию для быстрой вставки
+            cursor.execute("BEGIN TRANSACTION")
+            
+            for i, vacancy in enumerate(vacancies):
+                try:
+                    # Пропускаем вакансии без ID
+                    if not vacancy.get('id'):
+                        continue
+                    
+                    # УПРОЩЕННАЯ ПРОВЕРКА: только базовые проверки
+                    vacancy_id = self._generate_vacancy_id(vacancy)
+                    if vacancy_id in self.processed_vacancy_ids:
+                        continue  # Пропускаем дубликаты
+                    
+                    # Проверяем с упрощенной фильтрацией
+                    if not self._is_true_industrial_vacancy(vacancy):
+                        continue
+                    
+                    # Подготавливаем данные (все вакансии считаем промышленными)
+                    vacancy_data = self._prepare_vacancy_data(vacancy)
+                    
+                    # Вставляем вакансию
+                    cursor.execute("""
+                        INSERT OR IGNORE INTO vacancies (
+                            id, hh_id, name, name_cleaned, area, area_id, region,
+                            salary_from, salary_to, salary_currency, salary_avg_rub,
+                            experience, schedule, employment, employer_name, employer_id,
+                            employer_trusted, industry_segment, position_level,
+                            professional_roles, industrial_keywords, key_skills_json,
+                            published_at, created_at, collected_at, collection_method,
+                            snippet_requirement, snippet_responsibility, has_salary, is_industrial
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, vacancy_data)
+                    
+                    inserted_count += 1
+                    self.processed_vacancy_ids.add(vacancy_id)
+                    
+                    # Вставляем навыки если они есть
+                    if vacancy.get('key_skills'):
+                        self._insert_skills_batch(cursor, vacancy_data[0], vacancy['key_skills'])
+                    
+                    # Логируем прогресс каждые 5000 вакансий
+                    if inserted_count % 5000 == 0:
+                        progress = (inserted_count / total_vacancies) * 100
+                        self.logger.info(f"📊 Прогресс: {inserted_count:,}/{total_vacancies:,} ({progress:.1f}%)")
+                        
+                    # Коммитим батчами для оптимизации
+                    if inserted_count % self.batch_size == 0:
+                        self.connection.commit()
+                        cursor.execute("BEGIN TRANSACTION")
+                        
+                except sqlite3.IntegrityError:
+                    continue  # Пропускаем дубликаты
+                except Exception as e:
+                    if inserted_count % 1000 == 0:  # Логируем не все ошибки
+                        self.logger.warning(f"⚠️ Ошибка при вставке вакансии {vacancy.get('id')}: {e}")
+                    continue
+            
+            # Финальный коммит
+            self.connection.commit()
+            self.logger.info(f"✅ Успешно вставлено {inserted_count:,} вакансий")
+            
+        except Exception as e:
+            self.connection.rollback()
+            self.logger.error(f"❌ Ошибка при массовой вставке: {e}")
+            import traceback
+            self.logger.error(traceback.format_exc())
+            
+        return inserted_count
+
+    def insert_vacancy(self, vacancy: Dict) -> bool:
+        """
+        Обертка для вставки одной вакансии. Возвращает True, если вставка прошла без ошибок.
+        """
+        try:
+            return self.insert_vacancies_batch([vacancy]) > 0
+        except Exception as e:
+            self.logger.error(f"❌ Ошибка вставки вакансии: {e}")
+            return False
 
     def _create_additional_indexes(self):
         """Создает дополнительные индексы для оптимизации запросов."""
@@ -252,87 +463,6 @@ class IndustrialDatabaseManager:
             
         except Exception as e:
             self.logger.warning(f"⚠️ Не удалось создать дополнительные индексы: {e}")
-
-    def insert_vacancies_batch(self, vacancies: List[Dict]) -> int:
-        """
-        Массовая вставка вакансий (оптимизированная для 500K+).
-        
-        Args:
-            vacancies: Список вакансий из FINAL_MERGED_INDUSTRIAL_VACANCIES.json
-            
-        Returns:
-            int: Количество успешно вставленных вакансий
-        """
-        if not vacancies:
-            self.logger.warning("⚠️ Нет вакансий для вставки")
-            return 0
-            
-        inserted_count = 0
-        total_vacancies = len(vacancies)
-        
-        self.logger.info(f"🔄 Начинаем вставку {total_vacancies:,} вакансий...")
-        
-        try:
-            cursor = self.connection.cursor()
-            
-            # Начинаем транзакцию для быстрой вставки
-            cursor.execute("BEGIN TRANSACTION")
-            
-            for i, vacancy in enumerate(vacancies):
-                try:
-                    # Пропускаем вакансии без ID
-                    if not vacancy.get('id'):
-                        continue
-                    
-                    # Подготавливаем данные
-                    vacancy_data = self._prepare_vacancy_data(vacancy)
-                    
-                    # Вставляем вакансию
-                    cursor.execute("""
-                        INSERT OR IGNORE INTO vacancies (
-                            id, hh_id, name, name_cleaned, area, area_id, region,
-                            salary_from, salary_to, salary_currency, salary_avg_rub,
-                            experience, schedule, employment, employer_name, employer_id,
-                            employer_trusted, industry_segment, position_level,
-                            professional_roles, industrial_keywords, key_skills_json,
-                            published_at, created_at, collected_at, collection_method,
-                            snippet_requirement, snippet_responsibility, has_salary, is_industrial
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, vacancy_data)
-                    
-                    inserted_count += 1
-                    
-                    # Вставляем навыки если они есть
-                    if vacancy.get('key_skills'):
-                        self._insert_skills_batch(cursor, vacancy_data[0], vacancy['key_skills'])
-                    
-                    # Логируем прогресс каждые 1000 вакансий
-                    if inserted_count % 1000 == 0:
-                        progress = (inserted_count / total_vacancies) * 100
-                        self.logger.info(f"📊 Прогресс: {inserted_count:,}/{total_vacancies:,} ({progress:.1f}%)")
-                        
-                    # Коммитим батчами для оптимизации
-                    if inserted_count % self.batch_size == 0:
-                        self.connection.commit()
-                        cursor.execute("BEGIN TRANSACTION")
-                        
-                except sqlite3.IntegrityError:
-                    continue  # Пропускаем дубликаты
-                except Exception as e:
-                    self.logger.warning(f"⚠️ Ошибка при вставке вакансии {vacancy.get('id')}: {e}")
-                    continue
-            
-            # Финальный коммит
-            self.connection.commit()
-            self.logger.info(f"✅ Успешно вставлено {inserted_count:,} вакансий")
-            
-        except Exception as e:
-            self.connection.rollback()
-            self.logger.error(f"❌ Ошибка при массовой вставке: {e}")
-            import traceback
-            self.logger.error(traceback.format_exc())
-            
-        return inserted_count
 
     def _prepare_vacancy_data(self, vacancy: Dict) -> tuple:
         """
@@ -399,7 +529,7 @@ class IndustrialDatabaseManager:
         snippet_requirement = snippet_data.get('requirement', '')
         snippet_responsibility = snippet_data.get('responsibility', '')
         
-        # Промышленный флаг
+        # Промышленный флаг - ВСЕГДА 1 (данные уже промышленные)
         is_industrial = 1
         
         return (
@@ -458,11 +588,18 @@ class IndustrialDatabaseManager:
     def _classify_industry_segment(self, vacancy: Dict) -> str:
         """
         Классификация отраслевого сегмента.
+        Использует улучшенную классификацию из classification_config.py если доступна.
         """
+        if USE_IMPORTED_CLASSIFIERS:
+            name = vacancy.get('name', '')
+            employer_name = vacancy.get('employer', {}).get('name', '')
+            return classify_industry_segment(name, employer_name)
+        
+        # Fallback на старую логику если импорт не удался
         name = vacancy.get('name', '').lower()
         employer_name = vacancy.get('employer', {}).get('name', '').lower()
         
-        # Ключевые слова для сегментов
+        # Ключевые слова для сегментов (упрощенная версия)
         segments_keywords = {
             'машиностроение': [
                 'машиностроение', 'станкостроение', 'автомобилестроение',
@@ -516,7 +653,13 @@ class IndustrialDatabaseManager:
     def _classify_position_level(self, vacancy: Dict) -> str:
         """
         Классификация уровня позиции.
+        Использует улучшенную классификацию из classification_config.py если доступна.
         """
+        if USE_IMPORTED_CLASSIFIERS:
+            name = vacancy.get('name', '')
+            return classify_position_level(name)
+        
+        # Fallback на старую логику если импорт не удался
         name = vacancy.get('name', '').lower()
         
         levels_keywords = {
@@ -746,6 +889,7 @@ class IndustrialDatabaseManager:
 def load_industrial_data():
     """
     Быстрая загрузка данных из FINAL_MERGED_INDUSTRIAL_VACANCIES.json
+    с упрощенной фильтрацией.
     """
     db_manager = IndustrialDatabaseManager()
     
